@@ -22,13 +22,14 @@
  */
 package com.adobe.cairngorm.navigation.core
 {
-	import com.adobe.cairngorm.LogUtil;
 	import com.adobe.cairngorm.navigation.NavigationEvent;
 	import com.adobe.cairngorm.navigation.NavigationUtil;
 	
-	import mx.logging.ILogger;
-	
-	import org.spicefactory.parsley.core.context.Context;
+import org.spicefactory.lib.logging.LogContext;
+
+import org.spicefactory.lib.logging.Logger;
+
+import org.spicefactory.parsley.core.context.Context;
 	import org.spicefactory.parsley.core.messaging.Message;
 	import org.spicefactory.parsley.core.messaging.MessageProcessor;
 	import org.spicefactory.parsley.core.messaging.MessageState;
@@ -48,7 +49,7 @@ package com.adobe.cairngorm.navigation.core
 
 		private var newProcessor:MessageProcessor;
 
-		private static const LOG:ILogger=LogUtil.getLogger(NavigationMessageProcessor);
+		private static const LOG:Logger = LogContext.getLogger(NavigationMessageProcessor);
 
 		public function NavigationMessageProcessor(interceptor:NavigationParsleyAdaptor, destination:String, finalDestination:String, action:String, processor:MessageProcessor, newProcessor:MessageProcessor=null)
 		{
@@ -119,7 +120,7 @@ package com.adobe.cairngorm.navigation.core
 					}
 					interceptor.processorInterceptor.lastInterceptors[destination]=false;
 				}
-				interceptor.controller.navigateTo(NavigationEvent(newProcessor.message).destination, finalDestination);
+				interceptor.controller.navigateTo(NavigationEvent(newProcessor.message.instance).destination, finalDestination);
 				interceptor.controller.blockExit(destination);
 			}
 		}

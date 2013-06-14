@@ -29,8 +29,6 @@ package com.adobe.cairngorm.navigation.waypoint
     
     import flash.system.ApplicationDomain;
     
-    import mx.core.UIComponent;
-    
     import org.spicefactory.lib.reflect.ClassInfo;
     import org.spicefactory.parsley.core.context.Context;
     import org.spicefactory.parsley.core.events.ContextEvent;
@@ -74,7 +72,7 @@ package com.adobe.cairngorm.navigation.waypoint
 		{
 			this.targetObject = target;
 			
-			var view:UIComponent = UIComponent(targetObject.instance);
+			var view:Object = targetObject.instance;
 			
 			waypointHandler = new WaypointHandler(controller.controller, name);
 			waypointHandler.addEventListener(NavigationEvent.NAVIGATE_TO, waitForParsleyContext);			

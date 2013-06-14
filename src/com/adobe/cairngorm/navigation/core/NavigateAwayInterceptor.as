@@ -35,11 +35,29 @@ package com.adobe.cairngorm.navigation.core
 			return 0;
 		}
 
-		[Bindable]
-		public var messageType:Class=NavigationEvent;
+		private var _messageType:Class=NavigationEvent;
+
+        public function get messageType():Class
+        {
+            return _messageType;
+        }
+
+        public function set messageType(value:Class):void
+        {
+            _messageType = value;
+        }
 		
-		[Bindable]
-		public var selector:*=NavigationEvent.NAVIGATE_AWAY;
+		private var _selector:*=NavigationEvent.NAVIGATE_AWAY;
+
+        public function get selector():*
+        {
+            return _selector;
+        }
+
+        public function set selector(value:*):void
+        {
+            _selector = value;
+        }
 
 		private var _controller:NavigationController;
 
@@ -75,5 +93,5 @@ package com.adobe.cairngorm.navigation.core
 				}
 			}
 		}
-	}
+    }
 }
