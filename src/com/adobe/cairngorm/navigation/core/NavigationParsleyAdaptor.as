@@ -111,6 +111,10 @@ package com.adobe.cairngorm.navigation.core
 			{
 				processor.resume();
 			}
+			else if (processor.state == MessageState.SUSPENDED)
+			{
+				// wait for processor.resume() or processor.cancel() calls
+			}
 			else
 			{
 				if(processor.state != MessageState.COMPLETE)
